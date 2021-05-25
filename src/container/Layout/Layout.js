@@ -14,7 +14,7 @@ class Layout extends Component {
     gender: "female",
     age: [1, 2, 3, 4, 5],
     password: "",
-    error: "",
+    errors: {},
   };
 
   componentDidMount() {
@@ -55,7 +55,6 @@ class Layout extends Component {
     const { name, phno, email, password } = this.state;
     let errors = { phno: "", name: "", email: "", password: "" };
 
-
     if (name.length < 6 || name.length > 25) {
       errors.name =
         "name should not be null and name length should be less than 25 and greater than 6";
@@ -93,6 +92,7 @@ class Layout extends Component {
         .catch((error) => console.log(error));
       this.clear();
     }
+    this.setState({ errors });
   };
 
   clear = () => {
@@ -107,7 +107,6 @@ class Layout extends Component {
   };
 
   render() {
-    
     return (
       <React.Fragment>
         <Input
@@ -124,6 +123,7 @@ class Layout extends Component {
           changeEmail={this.changeEmail}
           changePassword={this.changePassword}
           submit={this.submit}
+          errors= {this.state.errors}
         />
         <Details list={this.state.list} />
       </React.Fragment>

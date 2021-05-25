@@ -13,6 +13,8 @@ const Input = (props) => {
           <br />
           <input type="text" value={props.name} onChange={props.changeName} />
           <br />
+          {props.errors.name !== "" ? <label>{props.errors.name}</label> :null}
+          <br />
           <label>Phone no</label>
           <br />
           <input type="text" value={props.phno} onChange={props.changePhno} />
